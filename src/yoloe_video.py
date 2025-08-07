@@ -2,14 +2,14 @@ import cv2
 from ultralytics import YOLOE
 
 # Initialize a YOLOE model
-model = YOLOE("yoloe-v8l-seg.pt")  # or select yoloe-11s/m-seg.pt for different sizes
+model = YOLOE("yoloe-v8l-seg-pf.pt")  # or select yoloe-11s/m-seg.pt for different sizes
 
 # Set text prompt to detect person and bus. You only need to do this once after you load the model.
-names = ["ring", "glasses", "hand"]
+names = ["muffin"]
 model.set_classes(names, model.get_text_pe(names))
 
 # Open webcam (0 = default camera)
-cap = cv2.VideoCapture()
+cap = cv2.VideoCapture("video.mp4")
 
 if not cap.isOpened():
     print("Error: Could not open webcam.")
